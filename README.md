@@ -10,5 +10,5 @@
 
 Кроме того, архитектура приложения должна быть выстроена на основе паттерна MVVM  
 
-[Video](https://rutube.ru/video/private/18331fb40165532f864a5a5462f970f9/?p=WBB2A96RFjggb3XOl7yCqw)
+[Video](https://rutube.ru/video/private/c2bc546f11839bc1f81d49eea75803cb/?p=JRDeu33hQ9_mIdbITlZV8w)
 
