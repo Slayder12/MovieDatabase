@@ -4,13 +4,14 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/background_items"
     android:layout_marginVertical="12dp"
     android:layout_marginHorizontal="16dp">
 
     <ImageView
         android:id="@+id/resultIV"
-        android:layout_width="88dp"
-        android:layout_height="84dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:background="@drawable/bg_image_10"
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,7 +19,7 @@
 
     <LinearLayout
         android:id="@+id/result_info"
-        android:layout_width="185dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginStart="10dp"
@@ -31,9 +32,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
+            android:layout_gravity="center"
             android:textStyle="bold"
-            android:textSize="16sp"
-            tools:text="Sonic the Hedgehog 3"/>
+            android:textSize="20sp"
+            tools:text="Sonic the Hedgehog                   3"/>
+
         <TextView
             android:id="@+id/resultReleaseDateTV"
             android:layout_width="match_parent"
@@ -41,7 +44,7 @@
             android:ellipsize="end"
             android:maxLines="3"
             android:textColor="@color/black"
-            android:textSize="12sp"
+            android:textSize="16sp"
             tools:text="2024-12-19" />
 
     </LinearLayout>

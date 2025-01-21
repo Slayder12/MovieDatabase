@@ -1,22 +1,22 @@
 package com.example.moviedatabase
 
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.moviedatabase.data.api.adapters.MovieAdapter
+import com.example.moviedatabase.adapters.MainAdapter
 import com.example.moviedatabase.databinding.ActivityMainBinding
-import com.example.moviedatabase.utils.Resources
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val viewModel by viewModels<MainViewModel>()
-    private lateinit var movieAdapter: MovieAdapter
+    private lateinit var movieAdapter: MainAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,33 +25,16 @@ class MainActivity : AppCompatActivity() {
 
         initAdapter()
 
-        viewModel.moviesLiveData.observe(this) {response ->
-            when(response){
-                is Resources.Success -> {
-                    binding.pageProgressBar.visibility = View.INVISIBLE
-                    response.data?.let {
-                        movieAdapter.differ.submitList(it.results)
-                    }
-                }
-                is Resources.Loading -> {
-                    binding.pageProgressBar.visibility = View.VISIBLE
-                }
-                is Resources.Error -> {
-                    binding.pageProgressBar.visibility = View.INVISIBLE
-                    response.data?.let {
-                        Log.e("checkData", "Error $it")
-                    }
-                }
+        lifecycleScope.launch {
+            viewModel.moviesFlow.collectLatest { pagingData ->
+                movieAdapter.submitData(pagingData)
             }
-
         }
-
-        viewModel.loadMovies()
 
     }
 
     private fun initAdapter(){
-        movieAdapter = MovieAdapter()
+        movieAdapter = MainAdapter()
         binding.movieAdapterRV.apply {
             adapter = movieAdapter
             layoutManager = LinearLayoutManager(this@MainActivity)

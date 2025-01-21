@@ -5,15 +5,16 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/title_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Movies"
+        android:text="@string/movies_text"
         android:textStyle="bold"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,8 +26,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="42dp"
         android:layout_marginHorizontal="15dp"
-        android:text="Popular movise"
-        android:textColor="@color/black"
+        android:text="@string/popular_moves_text"
+        android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title_text" />
@@ -44,7 +45,7 @@
         app:layout_constraintTop_toBottomOf="@+id/popular_movies_text" />
 
     <ProgressBar
-        android:id="@+id/page_progress_bar"
+        android:id="@+id/pageProgressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="?attr/progressBarStyle"
