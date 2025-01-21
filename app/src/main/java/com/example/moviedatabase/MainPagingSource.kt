@@ -41,7 +41,6 @@ class MainPagingSource @Inject constructor(
                 LoadResult.Error(Throwable("Ошибка загрузки данных: ${response.message()}"))
             }
         } catch (e: Exception) {
-            // Обработка исключений
             LoadResult.Error(e)
         }
     }

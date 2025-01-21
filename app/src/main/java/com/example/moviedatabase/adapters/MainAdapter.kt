@@ -42,4 +42,5 @@ class MainAdapter : PagingDataAdapter<Result, MainAdapter.MovieViewHolder>(DIFF_
             holder.resultReleaseDateTV.text = result.release_date
         }
     }
+
 }
